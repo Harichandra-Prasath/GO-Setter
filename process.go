@@ -11,7 +11,7 @@ func Process(cfg *Config) {
 
 	chkerr(os.Chdir(cfg.Root))
 
-	chkerr(os.Mkdir(cfg.Name, 0777))
+	chkerr(os.Mkdir(cfg.Name, 0757))
 
 	chkerr(os.Chdir(cfg.Name))
 
@@ -30,4 +30,17 @@ func Process(cfg *Config) {
 
 	cmd = exec.Command("go", "mod", "init", cfg.Mod)
 	chkerr(cmd.Run())
+
+	// Stage 4 (File Stage)
+
+	if cfg.IsReadme {
+		chkerr(os.WriteFile("readme.md", getRContent(cfg.Name), 0757))
+	}
+	if cfg.IsMake {
+		chkerr(os.WriteFile("Makefile", getMContent(cfg.Name), 0757))
+	}
+	if cfg.IsIgnore {
+		chkerr(os.WriteFile(".gitignore", getIcontent(), 0757))
+	}
+
 }

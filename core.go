@@ -103,7 +103,7 @@ func Prompt(cfg *Config) {
 	fmt.Print("Do you need a readme? (yes or no) (default is yes): ")
 	n, _ = fmt.Scanln(&readme)
 	if n != 0 {
-		updateBool(readme, &cfg.IsMake)
+		updateBool(readme, &cfg.IsReadme)
 	}
 
 }
