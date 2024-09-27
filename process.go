@@ -43,4 +43,6 @@ func Process(cfg *Config) {
 		chkerr(os.WriteFile(".gitignore", getIcontent(), 0757))
 	}
 
+	chkerr(os.WriteFile("main.go", getMaincontent(), 0757))
+
 }

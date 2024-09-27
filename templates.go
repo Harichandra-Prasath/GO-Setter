@@ -20,3 +20,7 @@ build:
 func getIcontent() []byte {
 	return []byte("bin\n")
 }
+
+func getMaincontent() []byte {
+	return []byte("package main\n")
+}
